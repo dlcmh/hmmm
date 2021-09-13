@@ -1,8 +1,17 @@
+import { GetStaticProps } from 'next'
 import Link from 'next/link'
 
-const postIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+type PostIds = number[]
 
-export default function Posts() {
+export const getStaticProps: GetStaticProps = async () => {
+  const postIds: PostIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+
+  return {
+    props: { postIds },
+  }
+}
+
+export default function Posts({ postIds }: { postIds: PostIds }) {
   return (
     <div>
       <h1>Posts</h1>
